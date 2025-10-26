@@ -1,192 +1,132 @@
 <!DOCTYPE html>
 <html lang="{{ site.plainwhite.html_lang }}">
-
 <head>
   {%- include head.html -%}
-</head>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #fafafa;
+      color: #222;
+      margin: 0;
+    }
 
-{%- if site.plainwhite.condensed_mobile contains page.layout -%}
-{% assign condensed_class = "condensed" %}
-{% else %}
-{% assign condensed_class = "" %}
-{%- endif -%}
+    main.container {
+      display: flex;
+      flex-direction: row;
+      max-width: 1200px;
+      margin: 2rem auto;
+      gap: 2rem;
+    }
+
+    /* Sidebar */
+    aside.menu {
+      background: #f2e9fb;
+      padding: 1.5rem;
+      border-radius: 16px;
+      flex: 0 0 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    aside.menu h3 {
+      margin-top: 0;
+      color: #5b2fa1;
+    }
+    aside.menu a {
+      color: #3e2c6d;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    aside.menu a:hover {
+      text-decoration: underline;
+    }
+    .menu-category {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Project Grid */
+    section.content {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    .card h4 {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      color: #222;
+    }
+
+    .card p {
+      margin: 0;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .card span {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
+</head>
 
 <body>
   <main class="container">
-    <section class="about">
-      <div class="about-header {{condensed_class}}">
-      <div class="about-title">
-      <a href="{{ "/" | relative_url}}">
-        {% if site.plainwhite.portfolio_image_dark and site.plainwhite.dark_mode %}
-        <img class="light" src="{{site.baseurl }}/{{ site.plainwhite.portfolio_image }}" alt="{{ site.plainwhite.name }}" />
-        <img class="dark" src="{{site.baseurl }}/{{ site.plainwhite.portfolio_image_dark }}" alt="{{ site.plainwhite.name }}" />
-        {% else %}
-        <img src="{{site.baseurl }}/{{ site.plainwhite.portfolio_image }}" alt="{{ site.plainwhite.name }}" />
-        {% endif %}
-      </a>
-      <h2 id="title">
-        <a href="{{ "/" | relative_url }}">{{ site.plainwhite.name }}</a>
-      </h2>
-      </div>
-      {%- if site.plainwhite.tagline -%}
-      <p class="tagline">{{ site.plainwhite.tagline }}</p>
-      {%- endif -%}
-      </div>
-      {% capture footer %}
-      {%- if site.plainwhite.social_links != '' -%}
-      <ul class="social about-footer {{condensed_class}}">
-        {%- if site.plainwhite.social_links.github -%}
-        <a href="https://github.com/{{ site.plainwhite.social_links.github }}" target="_blank">
-          <li>
-            <i class="icon-github-circled"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.gitlab -%}
-        <a href="https://gitlab.com/{{ site.plainwhite.social_links.gitlab }}" target="_blank">
-          <li>
-            <i class="icon-gitlab"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.linkedIn -%}
-        <a href="https://www.linkedin.com/{{ site.plainwhite.social_links.linkedIn }}" target="_blank">
-          <li>
-            <i class="icon-linkedin-squared"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.twitter -%}
-        <a href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}" target="_blank">
-          <li>
-            <i class="icon-twitter-squared"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.instagram -%}
-        <a href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" target="_blank">
-          <li>
-            <i class="icon-instagram"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.facebook -%}
-        <a href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" target="_blank">
-          <li>
-            <i class="icon-facebook-squared"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.youtube -%}
-        <a href="https://youtube.com/{{ site.plainwhite.social_links.youtube }}" target="_blank">
-          <li>
-            <i class="icon-youtube"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.pinterest -%}
-        <a href="https://pinterest.com/{{ site.plainwhite.social_links.pinterest }}" target="_blank">
-          <li>
-            <i class="icon-pinterest-squared"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.dribbble -%}
-        <a href="https://dribbble.com/{{ site.plainwhite.social_links.dribbble }}" target="_blank">
-          <li>
-            <i class="icon-dribbble"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.flickr -%}
-        <a href="https://flickr.com/{{ site.plainwhite.social_links.flickr }}" target="_blank">
-          <li>
-            <i class="icon-flickr"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.telegram -%}
-        <a href=" https://t.me/{{ site.plainwhite.social_links.telegram }}" target="_blank">
-          <li>
-            <i class="icon-telegram"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.soundcloud -%}
-        <a href=" https://soundcloud.com/{{ site.plainwhite.social_links.soundcloud }}" target="_blank">
-          <li>
-            <i class="icon-soundcloud"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.email -%}
-        <a href="mailto:{{ site.plainwhite.social_links.email }}" target="_blank">
-          <li>
-            <i class="icon-mail-alt"></i>
-          </li>
-        </a>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.stackoverflow -%}
-        <a href="https://stackoverflow.com/users/{{ site.plainwhite.social_links.stackoverflow }}" target="_blank">
-          <li>
-            <i class="icon-stack-overflow"></i>
-          </li>
-        </a>
-        {%- endif -%}
-      </ul>
-      {%- endif -%}
-      {%- if site.plainwhite.navigation -%}
-      <nav class="navigation about-footer {{condensed_class}}">
-        <ul>
-          {% for link in site.plainwhite.navigation %}
-          <li>
-            <a href="{{ link.url }}">{{ link.title }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {%- endif -%}
-      <p class="about-footer {{condensed_class}}">&copy;
-        {{ "now" | date: "%Y" }}</p>
-      {%- if site.plainwhite.dark_mode -%}
-      <div class="about-footer {{condensed_class}}">
-        <p>Dark Mode
-          <i class="icon-moon"></i>
-          <label class="switch">
-            <input type="checkbox" class="dark-mode-toggle">
-            <span class="slider round" onclick="toggleDarkMode()"></span>
-          </label>
-        </p>
-      </div>
-      {%- endif -%}
-      {% endcapture %}
-      {{ footer }}
-    </section>
+    <aside class="menu">
+      <h3>📂 Menu</h3>
+      <div class="menu-category">🧠 <a href="#">Data Science</a></div>
+      <div class="menu-category">💼 <a href="#">Business & Banking</a></div>
+      <div class="menu-category">🔢 <a href="#">Mathematics</a></div>
+      <div class="menu-category">📖 <a href="#">Narrative Design</a></div>
+      <hr>
+      <a href="#">📁 All Projects</a>
+      <a href="#">⬅️ Back to Home Page</a>
+    </aside>
+
     <section class="content">
-      {{ content }}
+      <div class="card">
+        <img src="{{ '/assets/icons/bike.svg' | relative_url }}" alt="Bike">
+        <h4>San Francisco Bike Share Analysis</h4>
+        <p>Shortly describe your project</p>
+        <span>2025</span>
+      </div>
+
+      <div class="card">
+        <img src="{{ '/assets/icons/user.svg' | relative_url }}" alt="UX">
+        <h4>UX Research</h4>
+        <p>Shortly describe your project</p>
+        <span>2025</span>
+      </div>
+
+      <div class="card">
+        <h4>New Project</h4>
+        <p>Add your next project here</p>
+        <span>+</span>
+      </div>
     </section>
-    <footer class="{{condensed_class}}">
-      {{ footer }}
-    </footer>
   </main>
-  {% if site.plainwhite.dark_mode %}
-  <script type="text/javascript" src="{{ "/assets/js/darkmode.js" | relative_url }}"></script>
-  {% endif %}
-
-  {%- if site.plainwhite.analytics_id -%}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', '{{ site.plainwhite.analytics_id }}');
-  </script>
-  {%- endif -%}
-
-  {% if site.plainwhite.search %}
-  <script src="{{ "/assets/js/simple-jekyll-search.min.js" | relative_url }}"></script>
-  <script src="{{ "/assets/js/search.js" | relative_url }}"></script>
-  {% endif %}
 </body>
-
 </html>
