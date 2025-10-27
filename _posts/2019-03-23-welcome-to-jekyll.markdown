@@ -12,6 +12,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 This paragraph text is <b>larger</b> and <span style="color:#FF6F61;">colored</span>!
 </p>
 
+<p style="font-size:25px; color:#6A0DAD;">
+This paragraph text is <b>larger</b> and <span style="color:#FF6F61;">colored</span>!
+</p>
+
+
 Here is normal markdown text again.
 
 
