@@ -8,7 +8,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 # My Project Title
 
-<p style="font-size:25px; color:#6A0DAD;">
+<p style="font-size:10px; color:#6A0DAD;">
 This paragraph text is <b>larger</b> and <span style="color:#FF6F61;">colored</span>!
 </p>
 
