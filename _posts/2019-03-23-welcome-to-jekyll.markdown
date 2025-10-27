@@ -6,6 +6,15 @@ categories: Javascript NodeJS
 ---
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 
+# My Project Title
+
+<p style="font-size:25px; color:#6A0DAD;">
+This paragraph text is <b>larger</b> and <span style="color:#FF6F61;">colored</span>!
+</p>
+
+Here is normal markdown text again.
+
+
 ```javascript
 const Razorpay = require('razorpay');
 
